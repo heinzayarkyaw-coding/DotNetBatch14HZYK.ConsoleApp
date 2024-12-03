@@ -48,12 +48,19 @@ public class BlogController : ControllerBase
     }
 
 
-    [HttpPut]
-
-    public IActionResult UpdateBlog()
+    [HttpPut("{id}")]
+    public IActionResult UpsertBlog(string id, BlogModel requestModel)
     {
+        requestModel.BlogId = id;
+
+        var model = _blogService.UpsertBlog(requestModel);
+        if (!model.IsSuccess)
+        {
+            return BadRequest(model);
+        }
         return Ok();
     }
+
 
 
     [HttpPatch("{id}")]
@@ -70,11 +77,14 @@ public class BlogController : ControllerBase
         return Ok();
     }
 
-
-    [HttpDelete]
-
-    public IActionResult DeleteBlog()
+    [HttpDelete("{id}")]
+    public IActionResult DeleteBlog(string id)
     {
+        var model = _blogService.DeleteBlog(id);
+        if (model is null)
+        {
+            return BadRequest(model);
+        }
         return Ok();
     }
 }

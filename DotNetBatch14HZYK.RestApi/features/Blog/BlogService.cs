@@ -157,5 +157,67 @@ namespace DotNetBatch14HZYK.RestApi.features.Blog
             return model;
 
         }
+
+
+        public BlogResponseModel UpsertBlog(BlogModel requestModel)
+        {
+            BlogResponseModel model = new BlogResponseModel();
+
+            var item = GetBlog(requestModel.BlogId!);
+            if (item is not null)
+            {
+                string query = @"UPDATE [dbo].[Tbl_Blog]
+   SET [BlogTitle] = @BlogTitle
+      ,[BlogAuthor] = @BlogAuthor
+      ,[BlogContent] = @BlogContent
+ WHERE BlogId = @BlogId";
+
+                #region Update Database
+
+                SqlConnection connection = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
+                connection.Open();
+
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@BlogId", requestModel.BlogId);
+                cmd.Parameters.AddWithValue("@BlogTitle", requestModel.BlogTitle);
+                cmd.Parameters.AddWithValue("@BlogAuthor", requestModel.BlogAuthor);
+                cmd.Parameters.AddWithValue("@BlogContent", requestModel.BlogContent);
+                int result = cmd.ExecuteNonQuery();
+
+                connection.Close();
+
+                #endregion
+
+                string message = result > 0 ? "Updating Successful." : "Updating Failed.";
+
+                model.IsSuccess = result > 0;
+                model.Message = message;
+            }
+            else if (item is null)
+            {
+                model = CreateBlog(requestModel);
+            }
+
+            return model;
+        }
+
+        public BlogResponseModel DeleteBlog(string id)
+        {
+            SqlConnection con = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand("Delete from [dbo].[Tbl_Blog] where BlogId = @BlogId", con);
+            cmd.Parameters.AddWithValue("@BlogId", id);
+            int result = cmd.ExecuteNonQuery();
+
+            con.Close();
+
+            string message = result > 0 ? "Delete Success." : "Delete Fail!";
+            BlogResponseModel model = new BlogResponseModel();
+            model.IsSuccess = result > 0;
+            model.Message = message;
+
+            return model;
+        }
     }
 }
