@@ -1,7 +1,14 @@
-﻿namespace DotNetBatch14HZYK.RestApi.features.Blog
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace DotNetBatch14HZYK.RestApi.features.Blog
 {
+    [Table("tbl_blog")]
+
     public class BlogModel
     {
+        [Key]
+
         public string? BlogId { get; set; }
         public string? BlogTitle { get; set; }
         public string? BlogAuthor { get; set; }

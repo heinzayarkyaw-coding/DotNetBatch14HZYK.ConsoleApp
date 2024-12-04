@@ -1,9 +1,8 @@
 ﻿using Dapper;
-using DotNetBatch14HZYK.RestApi.features.Blog;
 using Microsoft.Data.SqlClient;
 using System.Data;
 
-namespace DotNetBatch14HZYK.RestApi.features.BlogDapper;
+namespace DotNetBatch14HZYK.RestApi.features.Blog;
 
 public class BlogDapperService : IBlogService
 {
@@ -13,12 +12,12 @@ public class BlogDapperService : IBlogService
     {
         _sqlConnectionStringBuilder = new SqlConnectionStringBuilder()
         {
-           DataSource = "LAPTOP-MMRAUNPQ",
-           InitialCatalog = "Textdb",
-           UserID = "sa",
-           Password = "Hlay1082001",
-           TrustServerCertificate = true
-       };
+            DataSource = "LAPTOP-MMRAUNPQ",
+            InitialCatalog = "Textdb",
+            UserID = "sa",
+            Password = "Hlay1082001",
+            TrustServerCertificate = true
+        };
 
     }
 
@@ -27,7 +26,7 @@ public class BlogDapperService : IBlogService
     {
         string query = "select * from tbl_blog with (nolock) ";
         using IDbConnection db = new SqlConnection(_sqlConnectionStringBuilder.ConnectionString);
-        
+
 
         var lst = db.Query<BlogModel>(query).ToList();
         return lst;
@@ -44,7 +43,7 @@ public class BlogDapperService : IBlogService
 
         var item = db.QueryFirstOrDefault<BlogModel>(query);
         return item!;
-        
+
 
     }
 

@@ -1,6 +1,4 @@
-﻿using DotNetBatch14HZYK.RestApi.features.BlogDapper;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace DotNetBatch14HZYK.RestApi.features.Blog;
 
@@ -12,7 +10,7 @@ public class BlogController : ControllerBase
 
     public BlogController()
     {
-        _blogService = new BlogDapperService();
+        _blogService = new BlogEFCoreService();
     }
 
     [HttpGet]
