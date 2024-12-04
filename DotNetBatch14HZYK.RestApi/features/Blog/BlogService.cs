@@ -3,7 +3,7 @@ using System.Data;
 
 namespace DotNetBatch14HZYK.RestApi.features.Blog
 {
-    public class BlogService
+    public class BlogService : IBlogService
     {
         private readonly SqlConnectionStringBuilder _sqlConnectionStringBuilder = new SqlConnectionStringBuilder()
         {
