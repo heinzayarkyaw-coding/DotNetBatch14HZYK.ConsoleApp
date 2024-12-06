@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBatch14HZYK.RestApiDo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KpayTransferSystemHZYK.RestApi", "KpayTransferSystemHZYK.RestApi\KpayTransferSystemHZYK.RestApi.csproj", "{F7CA628F-CA35-48DA-A88E-B31257F4068F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniPosSystemHZYK.RestApi", "MiniPosSystemHZYK.RestApi\MiniPosSystemHZYK.RestApi.csproj", "{6F03F0B9-C7BF-4963-8C55-3726BF5ECDFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{F7CA628F-CA35-48DA-A88E-B31257F4068F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7CA628F-CA35-48DA-A88E-B31257F4068F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7CA628F-CA35-48DA-A88E-B31257F4068F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F03F0B9-C7BF-4963-8C55-3726BF5ECDFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F03F0B9-C7BF-4963-8C55-3726BF5ECDFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F03F0B9-C7BF-4963-8C55-3726BF5ECDFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F03F0B9-C7BF-4963-8C55-3726BF5ECDFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
