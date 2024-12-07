@@ -7,4 +7,5 @@ namespace MiniPosSystemHZYK.RestApi.POS;
 [ApiController]
 public class Product_CatagoryController : ControllerBase
 {
+    private readonly AppContext
 }

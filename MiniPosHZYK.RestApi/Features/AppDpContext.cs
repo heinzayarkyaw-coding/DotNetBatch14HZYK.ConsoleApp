@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using MiniPosHZYK.RestApi.Features;
 
 namespace MiniPosSystemHZYK.RestApi.POS;
 
