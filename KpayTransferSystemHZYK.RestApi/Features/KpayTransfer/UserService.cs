@@ -141,4 +141,51 @@ public class UserService
 
         return model;
     }
+public UserResponseModel Deposit(UserDepositModel requestModel)
+    {
+        UserResponseModel model = new UserResponseModel();
+
+        var user = _db.Users.AsNoTracking().FirstOrDefault(x => x.mobile_number == requestModel.mobile_number);
+        if (user is null)
+        {
+            model.IsSuccess = false;
+            model.Message = "Incorrect Mobile Number!";
+            return model;
+        }
+
+        user.balance += requestModel.balance;
+
+        _db.Entry(user).State = EntityState.Modified;
+        var result = _db.SaveChanges();
+
+        string message = result > 0 ? "Deposit Success." : "Deposit Fail!";
+        model.IsSuccess = result > 0;
+        model.Message = message;
+
+        return model;
+    }
+
+    public UserResponseModel Withdraw(UserWithdrawModel requestModel)
+    {
+        UserResponseModel model = new UserResponseModel();
+
+        var user = _db.Users.AsNoTracking().FirstOrDefault(x => x.mobile_number == requestModel.mobile_number);
+        if (user is null)
+        {
+            model.IsSuccess = false;
+            model.Message = "Incorrect Mobile Number";
+            return model;
+        }
+
+        user.balance -= requestModel.balance;
+
+        _db.Entry(user).State = EntityState.Modified;
+        var result = _db.SaveChanges();
+
+        string message = result > 0 ? "Withdraw Success." : "Withdraw Fail!";
+        model.IsSuccess = result > 0;
+        model.Message = message;
+
+        return model;
+    }
 }

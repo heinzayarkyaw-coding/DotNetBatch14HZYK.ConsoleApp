@@ -1,11 +1,11 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
-namespace KpayTransferSystemHZYK.RestApi.Features.KpayTransfer;
+namespace KPayTransferHZYK.RestApi.KpayTransfer;
 
-
-public class AppDbContext : DbContext
+public class AppDpContext
 {
+
     private readonly SqlConnectionStringBuilder _conntectionBuilder = new SqlConnectionStringBuilder()
     {
         DataSource = "LAPTOP-MMRAUNPQ",
@@ -22,8 +22,6 @@ public class AppDbContext : DbContext
             optionsBuilder.UseSqlServer(_conntectionBuilder.ConnectionString);
         }
     }
-    public DbSet<KpayTransferModel>? TransfersHistory { get; set; }
-    public DbSet<UserModel>? Users { get; set; }
-
-  
+    public DbSet<DepositModel>? TransfersHistory { get; set; }
+    //public DbSet<UserModel>? Users { get; set; }
 }

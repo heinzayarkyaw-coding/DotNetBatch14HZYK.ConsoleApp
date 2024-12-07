@@ -14,7 +14,7 @@ public class KpayTransferService
 
     public KpayTransferModel GetRecord(string id)
     {
-        var item = _db.TransfersHistory!.AsNoTracking().FirstOrDefault(x => x.TransactionId == id);
+        var item = _db.TransfersHistory!.AsNoTracking().FirstOrDefault(x => x.transaction_id == id);
         return item!;
     }
 
@@ -56,12 +56,12 @@ public class KpayTransferService
 
         var history = new KpayTransferModel
         {
-            TransactionId = Guid.NewGuid().ToString(),
-            FromMobileNo = fromMobile,
-            ToMobileNo = toMobile,
-            Amount = amount,
-            Date = DateTime.Now,
-            Notes = notes,
+            transaction_id = Guid.NewGuid().ToString(),
+            from_mobile_number = fromMobile,
+            to_mobile_number = toMobile,
+            amount = amount,
+            transaction_date = DateTime.Now,
+            notes = notes,
         };
 
         _db.TransfersHistory!.Add(history);

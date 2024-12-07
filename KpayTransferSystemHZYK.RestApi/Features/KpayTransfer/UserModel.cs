@@ -12,6 +12,17 @@ public class UserModel
     public decimal? balance { get; set; } = 10000;
     public string? password { get; set; }
 }
+public class UserDepositModel
+{
+    public string? mobile_number { get; set; }
+    public decimal? balance { get; set; }
+}
+
+public class UserWithdrawModel
+{
+    public string? mobile_number { get; set; }
+    public decimal? balance { get; set; }
+}
 
 public class UserResponseModel
 {
